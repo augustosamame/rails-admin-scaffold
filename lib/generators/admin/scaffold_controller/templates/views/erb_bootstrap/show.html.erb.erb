@@ -2,8 +2,6 @@
   <h1>Ver <%= singular_table_name %></h1>
 </div>
 
-<p id="notice"><%%= notice %></p>
-
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
 <dl class="dl-horizontal">
   <dt><strong><%= attribute.human_name %>:</strong></dt>
