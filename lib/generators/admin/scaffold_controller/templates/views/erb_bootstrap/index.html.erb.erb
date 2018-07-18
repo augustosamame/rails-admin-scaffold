@@ -22,9 +22,9 @@
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
         <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
 <% end -%>
-        <td><%= link_to "<i class='material-icons'>visibility</i>".html_safe, "[:#{prefix}, #{singular_table_name}]" %></td>
-        <td><%= link_to "<i class='material-icons'>edit</i>".html_safe, "edit_#{prefixed_plain_model_url}_path(#{singular_table_name})" %></td>
-        <td><%= link_to "<i class='material-icons'>delete</i>".html_safe, "[:#{prefix}, #{singular_table_name}]", method: :delete, data: { confirm: 'Está seguro?' } %></td>
+        <td><%%= link_to  "<i class='material-icons'>visibility</i>".html_safe, "[:#{prefix}, #{singular_table_name}]" %></td>
+        <td><%%= link_to  "<i class='material-icons'>edit</i>".html_safe, "edit_#{prefixed_plain_model_url}_path(#{singular_table_name})" %></td>
+        <td><%%= link_to  "<i class='material-icons'>delete</i>".html_safe, "[:#{prefix}, #{singular_table_name}]", method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>
     <%% end %>
   </tbody>
