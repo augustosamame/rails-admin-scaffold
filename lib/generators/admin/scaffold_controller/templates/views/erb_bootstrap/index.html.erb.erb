@@ -1,6 +1,8 @@
 <div class="page-header">
-  <h1>Listing <%= plural_table_name %></h1>
+  <h1>Listado de <%= plural_table_name %></h1>
 </div>
+
+<%%= link_to 'Nuevo <%= human_name %>', new_<%= prefixed_plain_model_url %>_path, class: 'btn btn-primary', style: 'margin-bottom: 15px;' %>
 
 <table class="table table-striped">
   <thead>
@@ -8,9 +10,9 @@
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
       <th><%= attribute.human_name %></th>
 <% end -%>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Ver</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
     </tr>
   </thead>
 
@@ -20,9 +22,9 @@
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
         <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
 <% end -%>
-        <td><%%= link_to 'Show', <%= "[:#{prefix}, #{singular_table_name}]" %>, class: 'btn btn-default btn-xs' %></td>
-        <td><%%= link_to 'Edit', edit_<%= prefixed_plain_model_url %>_path(<%= singular_table_name %>), class: 'btn btn-default btn-xs' %></td>
-        <td><%%= link_to 'Destroy', <%= "[:#{prefix}, #{singular_table_name}]" %>, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %></td>
+        <td><%= link_to "<i class='material-icons'>visibility</i>".html_safe, "[:#{prefix}, #{singular_table_name}]" %></td>
+        <td><%= link_to "<i class='material-icons'>edit</i>".html_safe, "edit_#{prefixed_plain_model_url}_path(#{singular_table_name})" %></td>
+        <td><%= link_to "<i class='material-icons'>delete</i>".html_safe, "[:#{prefix}, #{singular_table_name}]", method: :delete, data: { confirm: 'Está seguro?' } %></td>
       </tr>
     <%% end %>
   </tbody>
@@ -30,4 +32,4 @@
 
 <br>
 
-<%%= link_to 'New <%= human_name %>', new_<%= prefixed_plain_model_url %>_path, class: 'btn btn-primary' %>
+<%%= link_to 'Nuevo <%= human_name %>', new_<%= prefixed_plain_model_url %>_path, class: 'btn btn-primary', style: 'margin-bottom: 15px;' %>
