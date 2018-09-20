@@ -1,35 +1,36 @@
 <div class="page-header">
+  <%%= link_to new_<%= prefixed_plain_model_url %>_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Nuevo <%= human_name %>
+  <%% end %>
   <h1>Listado de <%= plural_table_name %></h1>
 </div>
 
-<%%= link_to 'Nuevo <%= human_name %>', new_<%= prefixed_plain_model_url %>_path, class: 'btn btn-primary', style: 'margin-bottom: 15px;' %>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-<% attributes.reject(&:password_digest?).each do |attribute| -%>
-      <th><%= attribute.human_name %></th>
-<% end -%>
-      <th>Ver</th>
-      <th>Editar</th>
-      <th>Eliminar</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
-<% attributes.reject(&:password_digest?).each do |attribute| -%>
-        <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
-<% end -%>
-        <td><%%= link_to  "<i class='material-icons'>visibility</i>".html_safe, "[:#{prefix}, #{singular_table_name}]" %></td>
-        <td><%%= link_to  "<i class='material-icons'>edit</i>".html_safe, "edit_#{prefixed_plain_model_url}_path(#{singular_table_name})" %></td>
-        <td><%%= link_to  "<i class='material-icons'>delete</i>".html_safe, "[:#{prefix}, #{singular_table_name}]", method: :delete, data: { confirm: 'Está seguro?' } %></td>
+        <% attributes.reject(&:password_digest?).each do |attribute| -%>
+          <th><%= attribute.human_name %></th>
+        <% end -%>
+        <th>Ver</th>
+        <th>Editar</th>
+        <th>Borrar</th>
       </tr>
-    <%% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+        <tr>
+          <% attributes.reject(&:password_digest?).each do |attribute| -%>
+            <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+          <% end -%>
+          <td><%%= link_to  "<i class='material-icons'>visibility</i>".html_safe, <%= "[:#{prefix}, #{singular_table_name}]" %> %></td>
+          <td><%%= link_to  "<i class='material-icons'>edit</i>".html_safe, edit_<%= prefixed_plain_model_url %>_path(<%= singular_table_name %>) %></td>
+          <td><%%= link_to  "<i class='material-icons'>delete</i>".html_safe, <%= "[:#{prefix}, #{singular_table_name}]" %>, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+        </tr>
+      <%% end %>
+    </tbody>
+  </table>
+</div>
 <br>
-
-<%%= link_to 'Nuevo <%= human_name %>', new_<%= prefixed_plain_model_url %>_path, class: 'btn btn-primary', style: 'margin-bottom: 15px;' %>

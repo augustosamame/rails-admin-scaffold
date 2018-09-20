@@ -1,8 +1,13 @@
 <div class="page-header">
+  <%%= link_to <%= prefixed_index_helper %>_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Atrás
+  <%% end %>
+  <%%= link_to <%= "[:#{prefix}, @#{singular_table_name}]" %>, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Ver
+  <%% end %>
   <h1>Editando <%= singular_table_name %></h1>
 </div>
 
 <%%= render 'form' %>
-
-<%%= link_to 'Ver', <%= "[:#{prefix}, @#{singular_table_name}]" %>, class: 'btn btn-default' %>
-<%%= link_to 'Atrás', :back, class: 'btn btn-default' %>

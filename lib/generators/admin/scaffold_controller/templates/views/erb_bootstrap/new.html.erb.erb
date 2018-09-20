@@ -1,7 +1,9 @@
 <div class="page-header">
+  <%%= link_to <%= prefixed_index_helper %>_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Atrás
+  <%% end %>
   <h1>Nuevo <%= singular_table_name %></h1>
 </div>
 
 <%%= render 'form' %>
-
-<%%= link_to 'Atrás', :back, class: 'btn btn-default' %>

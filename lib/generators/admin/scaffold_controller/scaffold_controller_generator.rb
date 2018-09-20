@@ -106,7 +106,7 @@ module Admin
       end
 
       def parent_controller_class_name
-        "Admin::AdminController"
+        "Admin::Admin"
         #options[:parent_controller].capitalize
       end
 

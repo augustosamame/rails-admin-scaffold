@@ -1,13 +1,19 @@
 <div class="page-header">
+  <%%= link_to <%= prefixed_index_helper %>_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Atrás
+  <%% end %>
+  <%%= link_to edit_<%= prefixed_plain_model_url %>_path(@<%= singular_table_name %>), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <%% end %>
   <h1>Ver <%= singular_table_name %></h1>
 </div>
 
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
 <dl class="dl-horizontal">
-  <dt><strong><%= attribute.human_name %>:</strong></dt>
+  <dt><%= attribute.human_name %>:</dt>
   <dd><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
 </dl>
 
 <% end -%>
-<%%= link_to 'Editar', edit_<%= prefixed_plain_model_url %>_path(@<%= singular_table_name %>), class: 'btn btn-default' %>
-<%%= link_to 'Atrás', :back, class: 'btn btn-default' %>
